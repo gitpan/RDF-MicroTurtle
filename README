@@ -1,0 +1,56 @@
+NAME
+    RDF::MicroTurtle::Parser - parse MicroTurtle
+
+VERSION
+    0.001
+
+DESCRIPTION
+    This is a subclass of RDF::Trine::Parser and supports the methods
+    "parse_into_model", "parse_file_into_model", "parse_file" and "parse".
+
+  Constructor
+    Can be constructued using the usual RDF::Trine method:
+
+      my $parser = RDF::Trine::Parser->new('microturtle', %args);
+
+    Or:
+
+      my $parser = RDF::MicroTurtle::Parser->new(%args);
+
+    The most important argument is $args{'parsing_context'} which is an
+    instance of RDF::MicroTurtle::Context (or any subclasses). It may be
+    omitted in which case a new RDF::MicroTurtle::Context object will be
+    created.
+
+    Other arguments are booleans to suppress certain implicit contextual
+    triples.
+
+    *   $args{'no_agent_triples'} - suppresses implicit triples of the form
+        { <@person> a foaf:Agent ; foaf:nick "person" . }
+
+    *   $args{'no_tag_triples'} - suppresses implicit triples of the form {
+        <#hashtag> a tags:Tag ; tags:name "hashtag" . }
+
+    *   $args{'no_tagging_triples'} - suppresses implicit triples of the
+        form { <thing> tags:taggedWithTag <#hashtag> . }
+
+BUGS
+    Please report any bugs to <http://rt.cpan.org/>.
+
+SEE ALSO
+    RDF::Trine::Parser.
+
+    <http://www.perlrdf.org/>.
+
+    <http://buzzword.org.uk/2009/microturtle/spec>.
+
+AUTHOR
+    Toby Inkster <tobyink@cpan.org>.
+
+COPYRIGHT AND LICENCE
+    Copyright (C) 2009-2010 by Toby Inkster
+
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself, either Perl version 5.8 or, at your
+    option, any later version of Perl 5 you may have available.
+
